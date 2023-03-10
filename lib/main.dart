@@ -1,6 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:mobidthrift_admin_panel/Providers/seller_verification_provider.dart';
 import 'package:mobidthrift_admin_panel/Screens/home_screen.dart';
+import 'package:provider/provider.dart';
 
 import 'firebase_options.dart';
 
@@ -18,13 +20,21 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<SellerVerificationProvider>(
+          create: (context) => SellerVerificationProvider(),
+        ),
 
-        primarySwatch: Colors.blue,
+      ],
+      child: MaterialApp(
+        title: 'Flutter Demo',
+        theme: ThemeData(
+
+          primarySwatch: Colors.blue,
+        ),
+        home: const HomeScreen(),
       ),
-      home: const HomeScreen(),
     );
   }
 }

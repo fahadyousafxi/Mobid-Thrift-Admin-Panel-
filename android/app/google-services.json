@@ -1,0 +1,82 @@
+{
+  "project_info": {
+    "project_number": "180059824746",
+    "project_id": "mobidthrift",
+    "storage_bucket": "mobidthrift.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180059824746:android:9682bbd9195b7e6f486013",
+        "android_client_info": {
+          "package_name": "com.example.mobidthrift_admin_panel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180059824746-ld1r0747lentq2si7omtg8t4rfo8tqnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARBT7145tMi6x9hru5fakYKU-CMcKwDik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180059824746-ld1r0747lentq2si7omtg8t4rfo8tqnv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "180059824746-p63v1b2it2fk5v92oa0q25q9r2rns156.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mobidthrift.ecommerce.mobidthrift"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:180059824746:android:bf3db79eedc8827e486013",
+        "android_client_info": {
+          "package_name": "com.mobidthrift.ecommerce.mobidthrift"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "180059824746-ld1r0747lentq2si7omtg8t4rfo8tqnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARBT7145tMi6x9hru5fakYKU-CMcKwDik"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "180059824746-ld1r0747lentq2si7omtg8t4rfo8tqnv.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "180059824746-p63v1b2it2fk5v92oa0q25q9r2rns156.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.mobidthrift.ecommerce.mobidthrift"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

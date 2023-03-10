@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobidthrift_admin_panel/Screens/seller_verification_screen.dart';
 import 'package:mobidthrift_admin_panel/Screens/upload_ad.dart';
 
 import '../Screens/home_screen.dart';
@@ -22,6 +23,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 DrawerHeader(child: Container(color: Colors.red,),),
                 ListTile(title: Text('Home', ), leading: Icon(Icons.home), textColor: Colors.white, iconColor: Colors.white, onTap: (){Navigator.pop(context); Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));},),
                 ListTile(title: Text('Upload Ad', ), leading: Icon(Icons.add_a_photo_outlined), textColor: Colors.white, iconColor: Colors.white, onTap: (){Navigator.pop(context); Navigator.push(context, MaterialPageRoute(builder: (context) => UploadAd()));},),
+                ListTile(title: Text('Verified Seller', ), leading: Icon(Icons.verified_user), textColor: Colors.white, iconColor: Colors.white, onTap: (){Navigator.pop(context); Navigator.push(context, MaterialPageRoute(builder: (context) => SellerVerificationScreen()));},),
 
 
               ],
