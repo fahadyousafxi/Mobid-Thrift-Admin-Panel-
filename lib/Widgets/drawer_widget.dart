@@ -15,20 +15,62 @@ class _DrawerWidgetState extends State<DrawerWidget> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-          backgroundColor: Colors.black,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                DrawerHeader(child: Container(color: Colors.red,),),
-                ListTile(title: Text('Home', ), leading: Icon(Icons.home), textColor: Colors.white, iconColor: Colors.white, onTap: (){Navigator.pop(context); Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => HomeScreen()));},),
-                ListTile(title: Text('Upload Ad', ), leading: Icon(Icons.add_a_photo_outlined), textColor: Colors.white, iconColor: Colors.white, onTap: (){Navigator.pop(context); Navigator.push(context, MaterialPageRoute(builder: (context) => UploadAd()));},),
-                ListTile(title: Text('Verified Seller', ), leading: Icon(Icons.verified_user), textColor: Colors.white, iconColor: Colors.white, onTap: (){Navigator.pop(context); Navigator.push(context, MaterialPageRoute(builder: (context) => SellerVerificationScreen()));},),
-
-
-              ],
-            ),
-          )
-    );
+        backgroundColor: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              DrawerHeader(
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(22)),
+                  child: Center(child: const Text('Admin Panel')),
+                ),
+              ),
+              ListTile(
+                title: Text(
+                  'Home',
+                ),
+                leading: Icon(Icons.home),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Upload Ad',
+                ),
+                leading: Icon(Icons.add_a_photo_outlined),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => UploadAd()));
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Verified Seller',
+                ),
+                leading: Icon(Icons.verified_user),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SellerVerificationScreen()));
+                },
+              ),
+            ],
+          ),
+        ));
   }
 }

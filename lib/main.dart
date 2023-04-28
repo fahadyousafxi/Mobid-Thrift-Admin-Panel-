@@ -4,6 +4,7 @@ import 'package:mobidthrift_admin_panel/Providers/seller_verification_provider.d
 import 'package:mobidthrift_admin_panel/Screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'Providers/users_provider.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -25,12 +26,13 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<SellerVerificationProvider>(
           create: (context) => SellerVerificationProvider(),
         ),
-
+        ChangeNotifierProvider<UsersProvider>(
+          create: (context) => UsersProvider(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-
           primarySwatch: Colors.blue,
         ),
         home: const HomeScreen(),
