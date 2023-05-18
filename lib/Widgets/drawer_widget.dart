@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mobidthrift_admin_panel/Screens/reports.dart';
 import 'package:mobidthrift_admin_panel/Screens/seller_verification_screen.dart';
 import 'package:mobidthrift_admin_panel/Screens/upload_ad.dart';
 
@@ -56,7 +57,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
               ),
               ListTile(
                 title: Text(
-                  'Verified Seller',
+                  'Seller Verification',
                 ),
                 leading: Icon(Icons.verified_user),
                 textColor: Colors.white,
@@ -67,6 +68,19 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                       context,
                       MaterialPageRoute(
                           builder: (context) => SellerVerificationScreen()));
+                },
+              ),
+              ListTile(
+                title: Text(
+                  'Reports',
+                ),
+                leading: Icon(Icons.report_gmailerrorred),
+                textColor: Colors.white,
+                iconColor: Colors.white,
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => ReportsScreen()));
                 },
               ),
             ],

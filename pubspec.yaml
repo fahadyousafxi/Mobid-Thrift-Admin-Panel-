@@ -46,6 +46,10 @@ dependencies:
   firebase_database: ^10.0.9
   provider: ^6.0.5
 
+  google_maps_flutter: ^2.2.2
+  location: ^4.4.0
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

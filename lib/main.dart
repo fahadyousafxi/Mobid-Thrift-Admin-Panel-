@@ -4,6 +4,7 @@ import 'package:mobidthrift_admin_panel/Providers/seller_verification_provider.d
 import 'package:mobidthrift_admin_panel/Screens/home_screen.dart';
 import 'package:provider/provider.dart';
 
+import 'Providers/reports_provider.dart';
 import 'Providers/users_provider.dart';
 import 'firebase_options.dart';
 
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<UsersProvider>(
           create: (context) => UsersProvider(),
+        ),
+        ChangeNotifierProvider<ReportsProvider>(
+          create: (context) => ReportsProvider(),
         ),
       ],
       child: MaterialApp(

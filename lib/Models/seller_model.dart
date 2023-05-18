@@ -1,5 +1,6 @@
 class SellerModel {
   String? sellerName;
+  String? profileImage;
   String? sellerCNIC;
   String? sellerAddress;
   String? sellerEmail;
@@ -11,16 +12,16 @@ class SellerModel {
   bool? verification;
 
   SellerModel({
-    this.uId,
-    this.sellerEmail,
-    this.verification,
-    this.sellerAddress,
+    required this.profileImage,
+    required this.uId,
+    required this.sellerEmail,
+    required this.verification,
+    required this.sellerAddress,
     this.sellerCNIC,
-    this.sellerCNICImage1,
-    this.sellerCNICImage2,
-    this.sellerName,
-    this.sellerPhoneNumber,
-    this.sellerShopImage,
-});
-
+    required this.sellerCNICImage1,
+    required this.sellerCNICImage2,
+    required this.sellerName,
+    required this.sellerPhoneNumber,
+    required this.sellerShopImage,
+  });
 }

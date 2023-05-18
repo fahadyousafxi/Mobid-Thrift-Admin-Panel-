@@ -10,15 +10,19 @@ class SellerVerificationProvider with ChangeNotifier {
 
   productModels(QueryDocumentSnapshot element) {
     sellerModel = SellerModel(
-        verification: element.get("Verification"),
-        sellerName: element.get("Name"),
-        sellerEmail: element.get("Email"),
-        sellerShopImage: element.get("Shop_Image1"),
-        sellerCNICImage1: element.get("CNIC_Image1"),
-        sellerCNICImage2: element.get("CNIC_Image2"),
-        uId: element.get("Uid")
-        // bidDateTimeLeft: element.get("bidDateTimeLeft"),
-        );
+      verification: element.get("Verification"),
+      sellerName: element.get("Name"),
+      sellerEmail: element.get("Email"),
+      sellerShopImage: element.get("Shop_Image1"),
+      sellerCNICImage1: element.get("CNIC_Image1"),
+      sellerCNICImage2: element.get("CNIC_Image2"),
+      uId: element.get("Uid"),
+      profileImage: element.get("Profile_Image"),
+      sellerAddress: element.get("Address"),
+      // sellerCNIC: element.get("Uid"),
+      sellerPhoneNumber: element.get("Phone_Number"),
+      // bidDateTimeLeft: element.get("bidDateTimeLeft"),
+    );
     searchProductsList.add(sellerModel!);
   }
 

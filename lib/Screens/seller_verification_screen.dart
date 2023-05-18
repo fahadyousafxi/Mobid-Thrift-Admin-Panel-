@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:mobidthrift_admin_panel/Providers/seller_verification_provider.dart';
+import 'package:mobidthrift_admin_panel/Screens/seller_complete_profile.dart';
 import 'package:mobidthrift_admin_panel/utils/utils.dart';
 import 'package:provider/provider.dart';
 
@@ -13,17 +14,16 @@ class SellerVerificationScreen extends StatefulWidget {
 }
 
 class _SellerVerificationScreenState extends State<SellerVerificationScreen> {
-
   SellerVerificationProvider sellerProvider = SellerVerificationProvider();
-  final  _fireStore = FirebaseFirestore.instance.collection('SellerCenterUsers');
+  final _fireStore = FirebaseFirestore.instance.collection('SellerCenterUsers');
 
   // final _fireStoreSnapshot = FirebaseFirestore.instance
   //     .collection('SellerCenterUsers').get();
 
   @override
   void initState() {
-
-    SellerVerificationProvider productsProvider = Provider.of(context, listen: false);
+    SellerVerificationProvider productsProvider =
+        Provider.of(context, listen: false);
     productsProvider.fitchSellerVerification();
 
     super.initState();
@@ -38,119 +38,172 @@ class _SellerVerificationScreenState extends State<SellerVerificationScreen> {
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: Text(
-          'Seller Verified',
+          'Seller Verification',
           style: TextStyle(color: Colors.white),
         ),
       ),
-      body: sellerProvider.getSellerVerificationList.isEmpty ? Center(child: CircularProgressIndicator(),)
+      body: sellerProvider.getSellerVerificationList.isEmpty
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
           : Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: ListView.builder(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: ListView.builder(
                 itemCount: sellerProvider.getSellerVerificationList.length,
                 itemBuilder: (BuildContext context, int index) {
-
                   var data = sellerProvider.getSellerVerificationList[index];
 
-                  return Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 20),
-                    // width: 22,
-                    height: 200,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(22),
-                      border: Border.all(color: Colors.black, )
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Column(children: [
-                              SizedBox(
-                                height: 80,
-                                width: 100,
-                                  child: Image.network(data.sellerShopImage.toString())),
-                              SizedBox(height: 3,),
-                              Text('Shop')
-                            ],),
-
-                            Column(children: [
-                              SizedBox(height: 80,
-                                  width: 100,child: Image.network(data.sellerCNICImage1.toString())),
-                              SizedBox(height: 3,),
-                              Text('CNIC Pic 1')
-                            ],),
-
-                            Column(children: [
-                              SizedBox(height: 80,
-                                  width: 100,child: Image.network(data.sellerCNICImage2.toString())),
-                              SizedBox(height: 3,),
-                              Text('CNIC Pic 2')
-                            ],),
-
-
-                          ],
-                        ),
-                        SizedBox(height: 10,),
-                        Row(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SellerCompleteProfile(
+                                    address: data.sellerAddress,
+                                    cNICBackImage: data.sellerCNICImage2,
+                                    cNICFrontImage: data.sellerCNICImage1,
+                                    email: data.sellerEmail,
+                                    name: data.sellerName,
+                                    phoneNumber: data.sellerPhoneNumber,
+                                    shopImage: data.sellerShopImage,
+                                    verified: data.verification,
+                                    profileImage: data.profileImage,
+                                    uid: data.uId,
+                                  )));
+                    },
+                    child: Container(
+                      margin: EdgeInsets.only(top: 10, bottom: 20),
+                      // width: 22,
+                      height: 200,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(22),
+                          border: Border.all(
+                            color: Colors.black,
+                          )),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Column(
                                 children: [
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Text('Name:  '),
-                                      Text(data.sellerName.toString()),
-                                    ],
+                                  SizedBox(
+                                      height: 80,
+                                      width: 100,
+                                      child: Image.network(
+                                          data.sellerShopImage.toString())),
+                                  SizedBox(
+                                    height: 3,
                                   ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-
-                                    children: [
-                                      Text('Email:  '),
-                                      Text(data.sellerEmail.toString()),
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.end,
-                                        children: [
-                                          SizedBox(width: 10,),
-                                          data.verification == true ? Row(
-                                            children: [
-                                              Icon(Icons.check_circle, color: Colors.green,),
-                                              Text('Verified'),
-                                            ],
-                                          ) : ElevatedButton(onPressed: (){
-                                            _fireStore.doc(data.uId.toString()).update(
-                                                {
-                                                  'Verification': true,
-                                                }).then((value) {
-                                                  print('objectobjectobjectobjectobjectobject');
-                                                  setState(() {
-
-                                                  });
-                                            }).onError((error, stackTrace) {
-                                              Utils.flutterToast(error.toString());
-                                            });
-                                          }, child: Text('Verify'))
-                                        ],
-                                      ),
-
-                                    ],
-                                  ),
+                                  Text('Shop')
                                 ],
                               ),
-                            ),
-                          ],
-                        ),
-                      ],
+                              Column(
+                                children: [
+                                  SizedBox(
+                                      height: 80,
+                                      width: 100,
+                                      child: Image.network(
+                                          data.sellerCNICImage1.toString())),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text('CNIC Pic 1')
+                                ],
+                              ),
+                              Column(
+                                children: [
+                                  SizedBox(
+                                      height: 80,
+                                      width: 100,
+                                      child: Image.network(
+                                          data.sellerCNICImage2.toString())),
+                                  SizedBox(
+                                    height: 3,
+                                  ),
+                                  Text('CNIC Pic 2')
+                                ],
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text('Name:  '),
+                                        Text(data.sellerName.toString()),
+                                      ],
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      children: [
+                                        Text('Email:  '),
+                                        Text(data.sellerEmail.toString()),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            SizedBox(
+                                              width: 10,
+                                            ),
+                                            data.verification == true
+                                                ? Row(
+                                                    children: [
+                                                      Icon(
+                                                        Icons.check_circle,
+                                                        color: Colors.green,
+                                                      ),
+                                                      Text('Verified'),
+                                                    ],
+                                                  )
+                                                : ElevatedButton(
+                                                    onPressed: () {
+                                                      _fireStore
+                                                          .doc(data.uId
+                                                              .toString())
+                                                          .update({
+                                                        'Verification': true,
+                                                      }).then((value) {
+                                                        print(
+                                                            'objectobjectobjectobjectobjectobject');
+                                                        setState(() {});
+                                                      }).onError((error,
+                                                              stackTrace) {
+                                                        Utils.flutterToast(
+                                                            error.toString());
+                                                      });
+                                                    },
+                                                    child: Text('Verify'))
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   );
                 },
               ),
-          ),
+            ),
       // FutureBuilder<QuerySnapshot<Map<String,dynamic>>>(
       //     future: _fireStoreSnapshot,
       //     builder:
