@@ -1,6 +1,6 @@
 # mobidthrift_admin_panel
 
-A new Flutter project.
+A Flutter project for Mobidthrift admin panel.
 
 ## Getting Started
 
