@@ -48,6 +48,11 @@ dependencies:
 
   google_maps_flutter: ^2.2.2
   location: ^4.4.0
+  uni_links: ^0.5.1
+  url_launcher: ^6.1.11
+
+  firebase_dynamic_links: ^5.3.3
+  share_plus: ^7.0.2
 
 
 dev_dependencies:

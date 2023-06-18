@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mobidthrift_admin_panel/Screens/all_users_screen.dart';
+import 'package:mobidthrift_admin_panel/Screens/testing_share_screen.dart';
 import 'package:mobidthrift_admin_panel/Widgets/drawer_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -43,6 +44,17 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Center(
         child: Column(
           children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => TestingShareScreen(
+                            collectionName: 'collectionName',
+                            documentId: 'documentId')));
+              },
+              child: Text('Share Test'),
+            ),
             SizedBox(
               height: 22,
             ),
