@@ -33,7 +33,7 @@ class UsersProvider with ChangeNotifier {
     return shopKeepersDataList;
   }
 
-  ///********************** Seller Center Users *********************
+  ///********************** User Users *********************
 
   List<UsersModel> usersDataList = [];
 
